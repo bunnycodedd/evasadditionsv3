@@ -1,0 +1,6 @@
+#A magic number
+#Range: > 0
+magicNumber = 42
+#Disables spawning of hostile Mobs during nighttime at the surface
+disableSurfaceSpawning = false
+
