@@ -2,12 +2,13 @@ package dev.bunnycodedd.eadditions;
 
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.foundation.item.ItemDescription;
 import dev.bunnycodedd.eadditions.block.ModBlocks;
 import dev.bunnycodedd.eadditions.command.ModCommands;
 import dev.bunnycodedd.eadditions.entity.EntitySpawnListener;
-import net.minecraft.client.Minecraft;
+import dev.bunnycodedd.eadditions.item.ModItems;
+import net.createmod.catnip.lang.FontHelper;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -15,7 +16,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -29,7 +29,8 @@ public class EAdditions {
     public static final String MODID = "eadditions";
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
-    private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MODID);
+    private static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MODID)
+            .setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE));
 
 
     public EAdditions(FMLJavaModLoadingContext ctx) {
@@ -42,8 +43,10 @@ public class EAdditions {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
         ModBlocks.register();
+        ModItems.register();
 
         REGISTRATE.registerEventListeners(modEventBus);
+
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ctx.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -69,16 +72,7 @@ public class EAdditions {
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
 
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-        }
-    }
 
     public static CreateRegistrate registrate() {
         return REGISTRATE;
