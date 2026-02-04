@@ -57,7 +57,7 @@ public class PesticideSelectionHandler {
             Vec3 traceTarget = RaycastHelper.getTraceTarget(player, range, traceOrigin);
 
             double bestDistance = Double.MAX_VALUE;
-            Outliner.getInstance().showAABB(bbOutlineSlot, scanArea);
+
         }
     }
 

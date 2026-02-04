@@ -6,6 +6,7 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import dev.bunnycodedd.eadditions.block.ModBlocks;
 import dev.bunnycodedd.eadditions.command.ModCommands;
 import dev.bunnycodedd.eadditions.entity.EntitySpawnListener;
+import dev.bunnycodedd.eadditions.entity.block.ModBlockEntityTypes;
 import dev.bunnycodedd.eadditions.item.ModItems;
 import net.createmod.catnip.lang.FontHelper;
 import net.minecraft.world.level.block.Blocks;
@@ -44,6 +45,7 @@ public class EAdditions {
         MinecraftForge.EVENT_BUS.register(this);
         ModBlocks.register();
         ModItems.register();
+        ModBlockEntityTypes.register();
 
         REGISTRATE.registerEventListeners(modEventBus);
 

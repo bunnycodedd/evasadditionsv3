@@ -66,5 +66,35 @@
     },
     "done": true
   },
+  "eadditions:recipes/building_blocks/grass_slab": {
+    "criteria": {
+      "has_grass_block": "2025-12-30 21:32:47 +0100"
+    },
+    "done": true
+  },
+  "create:recipes/misc/crafting/kinetics/vertical_gearbox_from_conversion": {
+    "criteria": {
+      "has_item": "2025-12-30 22:27:32 +0100"
+    },
+    "done": true
+  },
+  "create:recipes/misc/crafting/kinetics/mysterious_cuckoo_clock": {
+    "criteria": {
+      "has_item": "2026-01-02 14:47:45 +0100"
+    },
+    "done": true
+  },
+  "create:recipes/misc/crafting/kinetics/white_sail_from_conversion": {
+    "criteria": {
+      "has_item": "2026-01-02 17:03:53 +0100"
+    },
+    "done": true
+  },
+  "create:wrench_goggles": {
+    "criteria": {
+      "1": "2026-01-02 18:52:08 +0100"
+    },
+    "done": false
+  },
   "DataVersion": 3465
 }
